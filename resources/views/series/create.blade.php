@@ -1,13 +1,10 @@
-<x-layout title="Nova Série">
-    <form action="/series/salvar" method="post" class="row g-3">
+<x-layout title="Cadastrar serie">
+    <form action="{{route('series.store')}}" method="POST">
         @csrf
-        <div class="col-auto col-6" >
-            <label class="form-label fw-bold" for="nome">Nome: </label>
-            <input class="form-control" type="text" id="nome" name="nome"/>
-        </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-primary mb-3">Enviar</button>
-        </div>
+        <label for="nome">Cadastrar Nova serie</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <button type="submit" class="btn btn-success">Adicionar</button>
     </form>
 
 </x-layout>

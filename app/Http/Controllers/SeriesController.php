@@ -3,30 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Serie;
-use Cassandra\Timestamp;
-use http\Exception\RuntimeException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\View\View;
 
 class SeriesController extends Controller
 {
-    public function index(Serie $series): View
+    public function index()
     {
-        return view('series.index')->with('series', $series::all());
+        $series = Serie::query()->orderBy('nome')->get();
+
+        return view('series.index')->with('series', $series);
     }
 
-    public function create(): View
+    public function create()
     {
         return view('series.create');
     }
 
     public function store(Request $request)
     {
-        $nomeSeries = $request->input('nome');
-        $serie = new Serie();
-        $serie->nome = $nomeSeries;
-        $serie->save();
-        return redirect('/series');
+
+        Serie::create($request->all());
+
+        return to_route('series.index');
     }
 }
