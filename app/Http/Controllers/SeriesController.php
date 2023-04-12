@@ -42,7 +42,7 @@ class SeriesController extends Controller
         );
     }
 
-    public function destroy(Serie $series)
+    public function destroy(Serie $series, SeriesFormRequest $request)
     {
         $series->delete();
         return to_route('series.index')->with(

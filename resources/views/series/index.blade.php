@@ -1,5 +1,4 @@
 <x-layout title="Listar Series">
-
     @isset($mensagemSucesso)
         <div class="alert alert-success">
             {{$mensagemSucesso}}
@@ -34,6 +33,4 @@
             <a href="{{route('series.create')}}" class="btn btn-success text-light">Nova serie</a>
         </div>
     </div>
-
-
 </x-layout>
