@@ -18,13 +18,13 @@
                         {{$serie->nome}}
 
                         <span class="d-flex">
-                        <a href="{{route('series.edit', $serie->id)}}" class="btn btn-primary btn-sm ">Ed</a>
-                        <form class="ms-2" action="{{route('series.destroy', $serie->id)}}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button class="btn btn-danger btn-sm">X</button>
-                        </form>
-                    </span>
+                            <a href="{{route('series.edit', $serie->id)}}" class="btn btn-primary btn-sm ">Ed</a>
+                            <form class="ms-2" action="{{route('series.destroy', $serie->id)}}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-danger btn-sm">X</button>
+                            </form>
+                        </span>
                     </li>
                 @endforeach
             </ul>
