@@ -6,7 +6,6 @@
         </div>
     @endisset
 
-
     <div class="card">
         <div class="card-header">
             <h5>Series</h5>

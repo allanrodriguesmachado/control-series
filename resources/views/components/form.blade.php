@@ -1,12 +1,9 @@
 <form action="{{$action}}" method="post">
     @csrf
 
-        @isset($nome)
-        @method('PUT')
-        @endisset
-{{--    @if($update)--}}
-{{--    @method('PUT')--}}
-{{--    @endif--}}
+    @if($update)
+    @method('PUT')
+    @endif
     <div class="mb-3">
         <label for="nome">Cadastrar Nova serie</label>
         <input
