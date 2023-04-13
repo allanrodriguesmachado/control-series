@@ -10,9 +10,6 @@
     <title>{{$title}}</title>
 </head>
 <body class="bg-dark">
-
-<x-header></x-header>
-
 <div class="container">
     <div class="pt-4">
         <div class="text-light">
