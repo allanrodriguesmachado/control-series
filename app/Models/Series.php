@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\{Model, Builder};
 
-class Serie extends Model
+class Series extends Model
 {
     use HasFactory;
 
     protected $fillable = ['nome'];
-    protected $with = ['seasons'];
+    protected $with = ['season'];
 
     public function seasons(): HasMany
     {
