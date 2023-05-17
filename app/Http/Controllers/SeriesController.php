@@ -25,12 +25,12 @@ class SeriesController extends Controller
     public function store(SeriesFormRequest $request): RedirectResponse
     {
         $series = Series::create($request->all());
-        for ($i = 1; $i < $request->seasonQty; $i++) {
+        for ($i = 1; $i <= $request->seasonQty; $i++) {
             $season = $series->seasons()->create([
                 'number' => $i
             ]);
 
-            for ($j = 1; $j < $request->episodesPerSeason; $j++) {
+            for ($j = 1; $j <= $request->episodesPerSeason; $j++) {
                 $episode = $series->episodes()->create([
                     'number' => $j
                 ]);
