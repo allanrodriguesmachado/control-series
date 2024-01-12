@@ -3,7 +3,9 @@
 
     <ul>
         @foreach($series AS $serie)
-            <li>{{$serie}}</li>
+            <li>{{$serie->name}}</li>
         @endforeach
     </ul>
+
+        <a class="btn btn-danger" href="create">Criar</a>
 </x-layout>
