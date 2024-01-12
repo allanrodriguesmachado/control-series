@@ -4,25 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class SeriesController extends Controller
 {
-    public function index()
+    public function index(): View
     {
-        $series = DB::select('SELECT name FROM series');
-
-        return view('series.index')->with('series', $series);
+        return view('series.index')
+            ->with('series', DB::select('SELECT name FROM series'));
     }
 
-    public function create()
+    public function create(): View
     {
         return view('series.create');
     }
 
     public function store(Request $request)
     {
-        $query = sprintf('INSERT INTO series (name) VALUES (%s)', $request->input('name'));
-
-        DB::insert($query);
+        DB::insert('INSERT INTO series (name) VALUES (?)', [$request->input('name')]);
+        return view('series.index');
     }
 }
