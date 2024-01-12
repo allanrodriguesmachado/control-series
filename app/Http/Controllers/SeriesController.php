@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Series;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
@@ -11,7 +13,7 @@ class SeriesController extends Controller
     public function index(): View
     {
         return view('series.index')
-            ->with('series', DB::select('SELECT name FROM series'));
+            ->with('series', Series::all('name'));
     }
 
     public function create(): View
@@ -19,9 +21,12 @@ class SeriesController extends Controller
         return view('series.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        DB::insert('INSERT INTO series (name) VALUES (?)', [$request->input('name')]);
-        return view('series.index');
+        $nameSeries = $request->input('name');
+        $series = new Series();
+        $series->name = $nameSeries;
+        $series->save();
+        return redirect('/list');
     }
 }
